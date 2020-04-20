@@ -25,7 +25,10 @@
     </div>
   </form>
 
-  <div *ngIf="this.result" class="result" [innerHTML]="this.result"></div>
+  <div *ngIf="this.result" class="result">
+    <div [innerHTML]="this.result"></div>
+    <app-calendar [start]="calendar.start" [end]="calendar.end" [endIncluded]="calendar.endIncluded"></app-calendar>
+  </div>
 </main>
 
 

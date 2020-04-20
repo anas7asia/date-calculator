@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as dayjs from 'dayjs';
+import { Dayjs } from 'dayjs';
+
+interface CalendarData {
+  start: Dayjs
+  end: Dayjs
+  endIncluded: boolean
+}
 
 @Component({
   selector: 'app-root',
@@ -9,9 +16,10 @@ import * as dayjs from 'dayjs';
 })
 export class AppComponent {
   
+  calendar: CalendarData
   dateForm = new FormGroup({
     start: new FormControl(new Date(), [Validators.required]),
-    end: new FormControl(undefined, [Validators.required]),
+    end: new FormControl(new Date('2020-04-25'), [Validators.required]),
     endIncluded: new FormControl(false)
   })
   result: string
@@ -20,13 +28,14 @@ export class AppComponent {
     const [start, end] = this.sortTwoDates(
       dayjs(this.dateForm.value.start), 
       dayjs(this.dateForm.value.end))
-    const res: number = this.addStartDate(start, end) + 
+    const daysCount: number = this.addStartDate(start, end) + 
       end.diff(start, 'day') +
       this.addEndDate(this.dateForm.value.endIncluded)
-    this.result = this.getTextResult(res, start, end, this.dateForm.value.endIncluded)
+    this.result = this.getTextResult(daysCount, start, end, this.dateForm.value.endIncluded)
+    this.calendar = { start, end, endIncluded: this.dateForm.value.endIncluded }
   }
 
-  private sortTwoDates(date1: dayjs.Dayjs, date2: dayjs.Dayjs): dayjs.Dayjs[] {
+  private sortTwoDates(date1: Dayjs, date2: Dayjs): Dayjs[] {
     return date1.isBefore(date2) ?
       [date1, date2] :
       [date2, date1]
@@ -34,7 +43,7 @@ export class AppComponent {
 
   /* start date is not taken into account by dayjs.diff, 
   include manually if more than one day of difference */
-  private addStartDate(start: dayjs.Dayjs, end: dayjs.Dayjs): number {
+  private addStartDate(start: Dayjs, end: Dayjs): number {
     return end.isSame(start, 'day') ? 0 : 1
   }
 
@@ -42,7 +51,7 @@ export class AppComponent {
     return isIncluded ? 1 : 0
   }
 
-  private getTextResult(result: number, start: dayjs.Dayjs, end: dayjs.Dayjs, endIncluded?: boolean): string {
+  private getTextResult(result: number, start: Dayjs, end: Dayjs, endIncluded?: boolean): string {
     return `
     <p>From and including: ${start.format('DD/MM/YYYY')}</p>
     <p>To${endIncluded ? ' and including': ''}: ${end.format('DD/MM/YYYY')}</p>

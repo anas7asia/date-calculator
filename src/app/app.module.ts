@@ -9,10 +9,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarMonthComponent } from './calendar/calendar-month/calendar-month.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalendarComponent,
+    CalendarMonthComponent
   ],
   imports: [
     BrowserModule,

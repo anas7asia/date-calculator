@@ -1,0 +1,32 @@
+.calendar {
+  display: inline-block;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.calendar-table {
+  display: inline-grid;
+  grid-template-columns: repeat(7, 1fr); // 7 for number of days in a week
+}
+
+.calendar-title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.calendar-cell {
+  padding: .75rem;
+  border: 1px solid #ececec;
+  color: darkgray;
+}
+
+.calendar-cell--disabled {
+  background-color: #f3f3f3;
+}
+
+.calendar-cell--active {
+  background-color: #4d4c7d;
+  color: #fff;
+}
