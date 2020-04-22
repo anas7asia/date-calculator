@@ -19,7 +19,7 @@ export class AppComponent {
   calendar: CalendarData
   dateForm = new FormGroup({
     start: new FormControl(new Date(), [Validators.required]),
-    end: new FormControl(new Date('2020-04-25'), [Validators.required]),
+    end: new FormControl(new Date('2020-05-25'), [Validators.required]),
     endIncluded: new FormControl(false)
   })
   result: string
@@ -53,9 +53,9 @@ export class AppComponent {
 
   private getTextResult(result: number, start: Dayjs, end: Dayjs, endIncluded?: boolean): string {
     return `
-    <p>From and including: ${start.format('DD/MM/YYYY')}</p>
-    <p>To${endIncluded ? ' and including': ''}: ${end.format('DD/MM/YYYY')}</p>
-    <p>Result: ${result} ${result > 1 ? 'days' : 'day'}</p>
+    <p><strong>From and including:</strong> ${start.format('DD/MM/YYYY')}</p>
+    <p><strong>To${endIncluded ? ' and including': ''}:</strong> ${end.format('DD/MM/YYYY')}</p>
+    <p><strong>Result:</strong> ${result} ${result > 1 ? 'days' : 'day'}</p>
     <p>It is ${result} ${result > 1 ? 'days' : 'day'} from the start date to the end date${endIncluded ? ', end date included' : '' }.</p>
     `
   }

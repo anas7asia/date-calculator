@@ -1,12 +1,13 @@
-<article class="calendar">
+<article>
   <header>
     <p class="calendar-title">{{ monthName }}</p>
   </header>
   <main class="calendar-table">
     <div 
       class="calendar-cell"
-      [ngClass]="{ 'calendar-cell--active': cell.isActive, 'calendar-cell--disabled': cell.isDisabled }" 
-      *ngFor="let cell of calendarCells">{{ cell.value }}</div>
+      [ngClass]="{ 'calendar-cell--active': cell.isActive }" 
+      *ngFor="let cell of calendarCells">
+      <span class="calendar-cell__value">{{ cell.value }}</span>
+    </div>
   </main>
-
 </article>

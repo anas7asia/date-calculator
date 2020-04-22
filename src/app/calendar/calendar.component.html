@@ -1,6 +1,8 @@
-<app-calendar-month 
-  *ngFor="let month of months" 
-  [month]="month" 
-  [start]="start" 
-  [end]="end" 
-  [endIncluded]="endIncluded"></app-calendar-month>
+<div class="calendars">
+  <app-calendar-month 
+    *ngFor="let month of months" 
+    [month]="month" 
+    [start]="start" 
+    [end]="end" 
+    [endIncluded]="endIncluded"></app-calendar-month>
+</div>

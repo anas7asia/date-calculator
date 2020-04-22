@@ -1,0 +1,9 @@
+$black: #000;
+$white: #fff;
+$tablet-width: 650px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}

@@ -1,18 +1,35 @@
+@import '_variables.scss';
+
 main {
+  margin: 0 auto;
   padding: 2rem;
+  max-width: 800px;
 }
 
-form {
+.select-date {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
   grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
+  margin-top: 3rem;
+}
+
+@include tablet {
+  .select-date {
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) auto;
+  }
+}
+
+.select-date__submit {
+  display: inline-block;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  border: 2px solid $white;
+  border-radius: 4px;
+  color: $black;
 }
 
 .result {
   margin-top: 2rem;
-  padding: 2rem;
-  background-color: rgba(255,255,255,.3);
-  border-radius: .4rem;
   font-size: 1rem;
   line-height: 1.3;
 }
