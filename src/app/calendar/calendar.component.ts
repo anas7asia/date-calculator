@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Dayjs } from 'dayjs';
 
 @Component({
@@ -30,5 +30,4 @@ export class CalendarComponent implements OnChanges {
     
     return result
   }
-
 }

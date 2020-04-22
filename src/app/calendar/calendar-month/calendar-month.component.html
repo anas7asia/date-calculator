@@ -3,6 +3,7 @@
     <p class="calendar-title">{{ monthName }}</p>
   </header>
   <main class="calendar-table">
+    <div class="calendar-cell" *ngFor="let day of daysOfWeek">{{ day }}</div>
     <div 
       class="calendar-cell"
       [ngClass]="{ 'calendar-cell--active': cell.isActive }" 

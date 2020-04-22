@@ -26,6 +26,7 @@ export class CalendarMonthComponent implements OnInit {
   @Input() endIncluded: boolean
   monthName: string
   calendarCells: CalendarCell[]
+  daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 
   ngOnInit() {
     this.monthName = this.month.format('MMMM')
