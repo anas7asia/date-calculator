@@ -1,0 +1,23 @@
+@import '_variables.scss';
+
+.select-date {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
+  margin-top: 3rem;
+}
+
+@include tablet {
+  .select-date {
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) auto;
+  }
+}
+
+.select-date__submit {
+  display: inline-block;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  border: 2px solid $white;
+  border-radius: 4px;
+  color: $black;
+}

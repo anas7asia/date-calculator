@@ -1,29 +1,7 @@
 <main>
   <h1>Days Calculator: Days Between Two Dates</h1>
 
-  <form class="select-date" [formGroup]="dateForm" (submit)="calcDate()">
-    <mat-form-field>
-      <mat-label>Start Date (DD/MM/YYYY)</mat-label>
-      <input matInput [matDatepicker]="startPicker" formControlName="start">
-      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-      <mat-datepicker #startPicker required></mat-datepicker>
-    </mat-form-field>
-    
-    <div>
-      <mat-form-field style="width:100%;">
-        <mat-label>End Date (DD/MM/YYYY)</mat-label>
-        <input matInput [matDatepicker]="endPicker" formControlName="end">
-        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-        <mat-datepicker #endPicker required></mat-datepicker>
-      </mat-form-field>
-
-      <mat-checkbox formControlName="endIncluded">Include End Date</mat-checkbox>
-    </div>
-  
-    <div>
-      <button type="submit" class="mat-body select-date__submit" [disabled]="!dateForm.valid">Calculate</button>
-    </div>
-  </form>
+  <app-date-form (submitForm)="getResult($event)"></app-date-form>
 
   <div *ngIf="this.result">
     <div class="result" [innerHTML]="this.result"></div>
