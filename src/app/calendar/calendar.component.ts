@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Dayjs } from 'dayjs';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarComponent implements OnChanges {
 
@@ -18,7 +19,7 @@ export class CalendarComponent implements OnChanges {
   }
 
   // ex. output: [starting month, next month, ..., last month]
-  private createMonthsRange(start, end): Dayjs[] {
+  private createMonthsRange(start: Dayjs, end: Dayjs): Dayjs[] {
     let tempDate: Dayjs = start
     const result: Dayjs[] = [tempDate]
 

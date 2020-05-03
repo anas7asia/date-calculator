@@ -19,12 +19,13 @@ export class AppComponent {
   result: string
 
   getResult(e) {
+    this.calendar = e
+
     const { start, end, endIncluded } = e
     const daysCount: number = this.addStartDate(start, end) + 
       end.diff(start, 'day') +
       this.addEndDate(endIncluded)
     this.result = this.getTextResult(daysCount, start, end, endIncluded)
-    this.calendar = { start, end, endIncluded }
   }
 
   /* start date is not taken into account by dayjs.diff, 

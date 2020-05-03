@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as dayjs from 'dayjs';
 import { Dayjs } from 'dayjs';
@@ -6,9 +6,10 @@ import { Dayjs } from 'dayjs';
 @Component({
   selector: 'app-date-form',
   templateUrl: './date-form.component.html',
-  styleUrls: ['./date-form.component.scss']
+  styleUrls: ['./date-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DateFormComponent implements OnInit {
+export class DateFormComponent {
 
   @Output() submitForm = new EventEmitter()
 
@@ -18,17 +19,15 @@ export class DateFormComponent implements OnInit {
     endIncluded: new FormControl(false)
   })
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   onSubmit() {
     const [start, end] = this.sortTwoDates(
       dayjs(this.dateForm.value.start), 
       dayjs(this.dateForm.value.end))
 
-    this.submitForm.emit({ start, end, endIncluded: this.dateForm.value.endIncluded })
+    this.submitForm.emit({ 
+      start, 
+      end, 
+      endIncluded: this.dateForm.value.endIncluded })
   }
 
   private sortTwoDates(date1: Dayjs, date2: Dayjs): Dayjs[] {
@@ -36,7 +35,4 @@ export class DateFormComponent implements OnInit {
       [date1, date2] :
       [date2, date1]
   }
-
-
-
 }

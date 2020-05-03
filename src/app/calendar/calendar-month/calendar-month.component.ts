@@ -9,7 +9,6 @@ dayjs.extend(isSameOrAfter)
 interface CalendarCell {
   value: string | number
   isActive: boolean
-  isDisabled: boolean
 }
 
 @Component({
@@ -43,22 +42,21 @@ export class CalendarMonthComponent implements OnInit {
     // empty cells at the beginning of calendar from the first cell till the cell with the first day of month (first row in calendar) 
     // days are counted from 0 to 6, Sun to Sat
     for (let i = 0; i < firstDayDayOfWeek; i++) {
-      result.push({ value: '', isActive: false, isDisabled: true })
+      result.push({ value: '', isActive: false })
     }
     
     // all days of month
     for (let i = 1; i <= daysInMonth; i++) {
       result.push({ 
         value: i, 
-        isActive: this.checkDateIsInBetween(i), 
-        isDisabled: false
+        isActive: this.checkDateIsInBetween(i)
       })
     }
     
     // empty cells in the end of calendar from the cell with the last day of month till the seventh cell (last row)
     // days are counted from 0 to 6, Sun to Sat
     for (let i = lastDayDayOfWeek; i < 6; i++) {
-      result.push({ value: '', isActive: false, isDisabled: true })
+      result.push({ value: '', isActive: false })
     }
 
     return result

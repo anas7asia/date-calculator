@@ -3,10 +3,10 @@
 
   <app-date-form (submitForm)="getResult($event)"></app-date-form>
 
-  <div *ngIf="this.result">
+  <section *ngIf="this.result">
     <div class="result" [innerHTML]="this.result"></div>
     <app-calendar [start]="calendar.start" [end]="calendar.end" [endIncluded]="calendar.endIncluded"></app-calendar>
-  </div>
+  </section>
 </main>
 
 
